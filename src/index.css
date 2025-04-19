@@ -1,1 +1,15 @@
 @import "tailwindcss";
+/* Example of media query for small screens */
+@media (max-width: 640px) {
+    .modal-container {
+        padding: 16px;
+        margin-top: 10%;
+    }
+    .search-input {
+        width: 100%;
+        font-size: 1.1rem;
+    }
+    .search-btn {
+        width: 100%;
+    }
+}

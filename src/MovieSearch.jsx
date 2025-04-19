@@ -1,5 +1,3 @@
-import React, { useState } from 'react';
-
 const MovieSearch = (props) => {
     const [movieSearch, setMovieSearch] = useState('');
     const [loading, setLoading] = useState(false);
@@ -34,10 +32,10 @@ const MovieSearch = (props) => {
 
     return (
         <form
-            className="flex flex-col items-center justify-center mt-10 mb-10 space-y-6 bg-gradient-to-r from-indigo-500 to-purple-500 p-8 rounded-2xl shadow-lg w-full sm:max-w-md mx-auto"
+            className="flex flex-col items-center justify-center mt-12 sm:mt-16 mb-10 space-y-6 bg-gradient-to-r from-pink-500 to-purple-600 p-8 rounded-3xl shadow-2xl w-11/12 sm:max-w-md mx-auto transition-transform transform hover:scale-105"
             onSubmit={handleSearch}
         >
-            <label htmlFor="search" className="text-white text-3xl font-bold text-center mb-4">
+            <label htmlFor="search" className="text-white text-3xl sm:text-4xl font-bold text-center">
                 🎬 Search Your Favourite Movie
             </label>
             <input
@@ -46,12 +44,12 @@ const MovieSearch = (props) => {
                 value={movieSearch}
                 onChange={(e) => setMovieSearch(e.target.value)}
                 placeholder="Enter movie name..."
-                className="w-full px-4 py-3 rounded-lg border-2 border-white text-black focus:outline-none focus:ring-2 focus:ring-yellow-300 shadow-md"
+                className="w-full px-6 py-3 rounded-lg border-2 border-white text-black focus:outline-none focus:ring-2 focus:ring-yellow-300 shadow-md"
             />
-            {error && <p className="text-red-500 text-lg">{error}</p>}
+            {error && <p className="text-red-500 text-lg text-center">{error}</p>}
             <button
                 type="submit"
-                className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-8 rounded-lg transition-all duration-300 ease-in-out shadow-md hover:scale-105"
+                className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-3 px-8 rounded-lg transition-all duration-300 ease-in-out shadow-md hover:scale-105"
                 disabled={loading}
             >
                 {loading ? '🔄 Searching...' : '🔍 Search'}
