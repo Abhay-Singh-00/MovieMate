@@ -6,7 +6,7 @@ const MovieSearch = (props) => {
     const handleSearch = async (e) => {
         e.preventDefault();
         try {
-            const url = `http://www.omdbapi.com/?apikey=72be683&t=${movieSearch}`;
+            const url = `https://www.omdbapi.com/?apikey=72be683&t=${movieSearch}`;
             const res = await fetch(url);
             const data = await res.json();
             props.addFavourites(data);
