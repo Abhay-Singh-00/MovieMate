@@ -1,6 +1,11 @@
 import React from 'react';
 
 const MovieModal = ({ movie, closeModal }) => {
+    // Check if the movie object is valid
+    if (!movie) {
+        return null;  // If movie is undefined or null, don't render the modal
+    }
+
     return (
         <div
             className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 transition-all duration-300 ease-in-out"
