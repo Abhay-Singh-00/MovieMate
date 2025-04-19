@@ -11,7 +11,7 @@ const FavouriteList = (props) => {
                     <h3 className="text-xl text-center text-gray-500 mt-10">No Favourite movie yet!</h3>
                   ) 
                 : (
-                    <ul className="space-y-6 mt-6 grid grid-cols-6 sm:grid-cols-4 lg:grid-cols-5 gap-8">
+                    <ul className="space-y-6 mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-8">
                         {props.favourites.map((movie) => (
                             <FavouriteMovie 
                                 key={movie.imdbID} 
