@@ -18,7 +18,7 @@ const MovieModal = ({ movie, closeModal }) => {
                         className="w-full h-64 sm:h-80 object-cover mb-4 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105"
                     />
                     <p className="text-gray-500 text-center mb-4">{movie.Year}</p>
-                    <p className="text-gray-700 text-lg text-justify">{movie.Plot}</p>
+                    <p className="text-gray-700 text-lg text-justify mb-4">{movie.Plot}</p>
                     <div className="flex justify-center mt-6">
                         <button
                             onClick={closeModal}
