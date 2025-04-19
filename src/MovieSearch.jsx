@@ -1,3 +1,6 @@
+import React, {useState} from 'react';
+import './App.css'
+
 const MovieSearch = (props) => {
     const [movieSearch, setMovieSearch] = useState('');
     const [loading, setLoading] = useState(false);
