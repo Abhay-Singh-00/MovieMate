@@ -1,41 +1,63 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const MovieModal = ({ movie, closeModal }) => {
-    // Check if the movie object is valid
-    if (!movie) {
-        return null;  // If movie is undefined or null, don't render the modal
-    }
+const MovieSearch = (props) => {
+    const [movieSearch, setMovieSearch] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+
+    const handleSearch = async (e) => {
+        e.preventDefault();
+        if (!movieSearch.trim()) {
+            setError('Please enter a movie name');
+            return;
+        }
+
+        setError('');
+        setLoading(true);
+        try {
+            const url = `https://www.omdbapi.com/?apikey=72be683&t=${movieSearch}`;
+            const res = await fetch(url);
+            const data = await res.json();
+
+            if (data.Response === 'False') {
+                setError('Movie not found');
+            } else {
+                props.addFavourites(data);
+            }
+        } catch (error) {
+            setError('Failed to fetch data');
+            console.error(error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
-        <div
-            className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 transition-all duration-300 ease-in-out"
-            onClick={closeModal}
+        <form
+            className="flex flex-col items-center justify-center mt-10 mb-10 space-y-6 bg-gradient-to-r from-indigo-500 to-purple-500 p-8 rounded-2xl shadow-lg w-full sm:max-w-md mx-auto"
+            onSubmit={handleSearch}
         >
-            <div
-                className="bg-white rounded-3xl shadow-xl p-6 max-w-sm sm:max-w-lg w-full mx-4 sm:mx-0 transform transition-all duration-500 ease-in-out scale-95 hover:scale-100"
-                onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the modal
+            <label htmlFor="search" className="text-white text-3xl font-bold text-center mb-4">
+                🎬 Search Your Favourite Movie
+            </label>
+            <input
+                type="text"
+                name="search"
+                value={movieSearch}
+                onChange={(e) => setMovieSearch(e.target.value)}
+                placeholder="Enter movie name..."
+                className="w-full px-4 py-3 rounded-lg border-2 border-white text-black focus:outline-none focus:ring-2 focus:ring-yellow-300 shadow-md"
+            />
+            {error && <p className="text-red-500 text-lg">{error}</p>}
+            <button
+                type="submit"
+                className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-8 rounded-lg transition-all duration-300 ease-in-out shadow-md hover:scale-105"
+                disabled={loading}
             >
-                <div className="relative">
-                    <h2 className="text-3xl font-semibold text-gray-800 mb-4 text-center">{movie.Title}</h2>
-                    <img
-                        src={movie.Poster}
-                        alt={movie.Title}
-                        className="w-full h-64 sm:h-80 object-cover mb-4 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105"
-                    />
-                    <p className="text-gray-500 text-center mb-4">{movie.Year}</p>
-                    <p className="text-gray-700 text-lg text-justify mb-4">{movie.Plot}</p>
-                    <div className="flex justify-center mt-6">
-                        <button
-                            onClick={closeModal}
-                            className="bg-gradient-to-r from-pink-500 to-purple-600 text-white py-2 px-6 rounded-full shadow-lg transform transition-all duration-300 hover:bg-gradient-to-r hover:from-pink-600 hover:to-purple-700 hover:scale-105"
-                        >
-                            Close
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+                {loading ? '🔄 Searching...' : '🔍 Search'}
+            </button>
+        </form>
     );
 };
 
-export default MovieModal;
+export default MovieSearch;

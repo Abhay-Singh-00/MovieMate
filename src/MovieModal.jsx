@@ -8,21 +8,21 @@ const MovieModal = ({ isModalOpen, movie, modalClose }) => {
             isOpen={isModalOpen}
             onRequestClose={modalClose}
             contentLabel={movie.Title}
-            className="max-w-4xl mx-auto mt-32 p-8 bg-white rounded-3xl shadow-xl outline-none"
+            className="max-w-4xl mx-auto mt-16 sm:mt-32 p-6 sm:p-8 bg-white rounded-3xl shadow-xl outline-none"
             overlayClassName="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center"
         >
-            <div className="flex flex-col md:flex-row gap-8">
+            <div className="flex flex-col sm:flex-row gap-6 sm:gap-8">
                 {/* Movie Image */}
                 <img
                     src={movie.Poster}
                     alt={movie.Title}
-                    className="w-64 h-96 rounded-xl shadow-2xl transform hover:scale-105 transition duration-300 ease-in-out"
+                    className="w-full sm:w-64 h-96 rounded-xl shadow-2xl transform hover:scale-105 transition duration-300 ease-in-out"
                 />
 
                 {/* Movie Details */}
-                <div className="text-gray-800 space-y-4 text-lg flex flex-col justify-between">
+                <div className="text-gray-800 space-y-4 text-base sm:text-lg flex flex-col justify-between">
                     <div>
-                        <h2 className="text-4xl font-extrabold">{movie.Title}</h2>
+                        <h2 className="text-3xl sm:text-4xl font-extrabold">{movie.Title}</h2>
                         <p className="text-lg text-gray-600">📅 {movie.Year}</p>
                     </div>
 
