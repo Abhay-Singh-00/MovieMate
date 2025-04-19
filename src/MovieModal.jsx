@@ -1,7 +1,5 @@
-import Modal from 'react-modal';
-
 const MovieModal = ({ isModalOpen, movie, modalClose }) => {
-    if (!movie) return null;
+    if (!movie) return null; // Don't render if movie is undefined or null
 
     return (
         <Modal
@@ -49,5 +47,3 @@ const MovieModal = ({ isModalOpen, movie, modalClose }) => {
         </Modal>
     );
 };
-
-export default MovieModal;
