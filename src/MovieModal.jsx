@@ -8,10 +8,10 @@ const MovieModal = ({ isModalOpen, movie, modalClose }) => {
             isOpen={isModalOpen}
             onRequestClose={modalClose}
             contentLabel={movie.Title}
-            className="modal-container max-w-4xl mx-auto mt-12 sm:mt-16 p-8 bg-white rounded-3xl shadow-xl outline-none"
+            className="modal-container max-w-4xl sm:max-w-2xl mx-auto mt-12 sm:mt-16 p-6 bg-white rounded-3xl shadow-xl outline-none overflow-auto"
             overlayClassName="overlay-fixed fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center"
         >
-            <div className="flex flex-col md:flex-row gap-6 sm:gap-8">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-8">
                 {/* Movie Image */}
                 <img
                     src={movie.Poster}
